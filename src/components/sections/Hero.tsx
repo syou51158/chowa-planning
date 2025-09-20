@@ -39,25 +39,32 @@ const Hero = () => {
         {/* 建設機械のシルエット風装飾 */}
         <div className="absolute inset-0">
           {/* 建設機械アイコン装飾 */}
-          {[...Array(6)].map((_, i) => (
+          {[
+            { left: 25.4, top: 77.6, rotate: 322.9, duration: 25, delay: 0 },
+            { left: 70.9, top: 29.4, rotate: 201.5, duration: 28, delay: 1.2 },
+            { left: 14.7, top: 39.1, rotate: 271.3, duration: 22, delay: 2.8 },
+            { left: 78.4, top: 49.2, rotate: 73.4, duration: 30, delay: 4.1 },
+            { left: 23.5, top: 23.9, rotate: 9.4, duration: 26, delay: 1.8 },
+            { left: 30.8, top: 27.3, rotate: 154.0, duration: 24, delay: 3.5 }
+          ].map((item, i) => (
             <motion.div
               key={i}
               className="absolute opacity-10"
               style={{
-                left: `${10 + Math.random() * 80}%`,
-                top: `${10 + Math.random() * 80}%`,
-                transform: `rotate(${Math.random() * 360}deg)`,
+                left: `${item.left}%`,
+                top: `${item.top}%`,
+                transform: `rotate(${item.rotate}deg)`,
               }}
               animate={{
                 scale: [1, 1.1, 1],
                 opacity: [0.05, 0.15, 0.05],
-                rotate: [0, 360],
+                rotate: [item.rotate, item.rotate + 360],
               }}
               transition={{
-                duration: 20 + Math.random() * 10,
+                duration: item.duration,
                 repeat: Infinity,
                 ease: "linear",
-                delay: Math.random() * 5,
+                delay: item.delay,
               }}
             >
               <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
@@ -67,34 +74,39 @@ const Hero = () => {
           ))}
           
           {/* 建築ツールアイコン装飾 */}
-          {[...Array(4)].map((_, i) => (
+          {[
+            { left: 54.8, top: 35.2, duration: 8.5, delay: 0.8 },
+            { left: 32.1, top: 65.7, duration: 7.2, delay: 2.1 },
+            { left: 75.3, top: 28.9, duration: 9.8, delay: 1.5 },
+            { left: 41.6, top: 52.4, duration: 6.7, delay: 0.3 }
+          ].map((item, i) => (
             <motion.div
               key={`tool-${i}`}
               className="absolute opacity-8"
               style={{
-                left: `${20 + Math.random() * 60}%`,
-                top: `${20 + Math.random() * 60}%`,
+                left: `${item.left}%`,
+                top: `${item.top}%`,
               }}
               animate={{
                 y: [0, -10, 0],
                 opacity: [0.05, 0.12, 0.05],
               }}
               transition={{
-                duration: 6 + Math.random() * 4,
+                duration: item.duration,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: Math.random() * 3,
+                delay: item.delay,
               }}
             >
               <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-                <path d="M13.78 15.3L19.78 21.3L21.89 19.14L15.89 13.14L13.78 15.3ZM17.5 10.1C17.11 10.1 16.69 10.05 16.36 9.91L4.97 21.25L2.86 19.14L10.27 11.74C8.5 8.3 9.74 4.16 13.09 2.44C16.44 .72 20.58 1.96 22.3 5.31C24.02 8.66 22.78 12.8 19.43 14.52C18.5 15 17.5 15.2 16.5 15.1L19.61 18.21L17.5 20.32L14.39 17.21C14.39 16.3 14.50 15.3 17.5 10.1Z"/>
+                <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
               </svg>
             </motion.div>
           ))}
         </div>
         
         {/* オーバーレイ */}
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/20"></div>
       </div>
       
       {/* コンテンツ */}
@@ -116,7 +128,12 @@ const Hero = () => {
               建築・土木で
             </span>
             <br />
-            <span className="bg-gradient-to-r from-brand-accent to-brand-warning bg-clip-text text-transparent drop-shadow-lg">
+            <span className="text-brand-accent drop-shadow-lg" style={{
+              background: 'linear-gradient(to right, #f59e0b, #eab308)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
               未来を築く
             </span>
           </motion.h1>
@@ -167,27 +184,24 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 px-4 sm:px-0"
           >
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  <Icon className="h-8 w-8 text-brand-forest mx-auto mb-3" />
-                  <div className="text-3xl font-bold text-white mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-white/90 font-medium">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              );
-            })}
+            {stats.map(({ icon: Icon, label, value }, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <Icon className="h-8 w-8 text-brand-forest mx-auto mb-3" />
+                <div className="text-3xl font-bold text-brand-forest mb-1">
+                  {value}
+                </div>
+                <div className="text-sm text-brand-steel font-medium">
+                  {label}
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
 
           {/* Contact info */}

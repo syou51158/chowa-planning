@@ -58,7 +58,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-brand-forest via-brand-forest to-brand-sage text-white relative overflow-hidden">
+    <footer className="bg-brand-primary text-white relative overflow-hidden" style={{ backgroundColor: '#1E3A8A', color: 'white' }}>
+      {/* 強制的にダーク背景を適用してコントラストを確保 */}
       {/* 背景装飾 */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48" />
@@ -126,7 +127,7 @@ export default function Footer() {
                   <li key={item.name}>
                     <Link 
                       href={item.href}
-                      className="text-white/80 hover:text-white transition-colors duration-300 text-sm block py-1 hover:translate-x-1 transform transition-transform"
+                      className="text-white/90 hover:text-white transition-colors duration-300 text-sm block py-1 hover:translate-x-1 transform transition-transform"
                     >
                       {item.name}
                     </Link>
@@ -148,7 +149,7 @@ export default function Footer() {
                   <li key={item.name}>
                     <Link 
                       href={item.href}
-                      className="text-white/80 hover:text-white transition-colors duration-300 text-sm block py-1 hover:translate-x-1 transform transition-transform"
+                      className="text-white/90 hover:text-white transition-colors duration-300 text-sm block py-1 hover:translate-x-1 transform transition-transform"
                     >
                       {item.name}
                     </Link>
@@ -208,7 +209,7 @@ export default function Footer() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="flex flex-wrap items-center justify-center md:justify-start space-x-6 text-sm text-white/70"
+              className="flex flex-wrap items-center justify-center md:justify-start space-x-6 text-sm text-white/90"
             >
               {navigation.legal.map((item, index) => (
                 <span key={item.name} className="flex items-center">
@@ -232,7 +233,7 @@ export default function Footer() {
               viewport={{ once: true }}
               className="flex items-center space-x-4"
             >
-              <p className="text-sm text-white/70">
+              <p className="text-sm text-white/90">
                 © 2024 株式会社調和プランニング. All rights reserved.
               </p>
               

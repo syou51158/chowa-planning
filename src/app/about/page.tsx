@@ -164,7 +164,7 @@ export default function AboutPage() {
                       <div className="text-xl font-semibold text-brand-stone mb-2">
                         {achievement.label}
                       </div>
-                      <div className="text-brand-stone/70">
+                      <div className="text-brand-steel">
                         {achievement.description}
                       </div>
                     </CardContent>

@@ -360,7 +360,7 @@ export default function ContactPage() {
                       </Button>
                     </div>
                     
-                    <div className="text-sm text-brand-stone/70 leading-relaxed">
+                    <div className="text-sm text-brand-steel leading-relaxed">
                       <AlertCircle className="w-4 h-4 inline mr-1" />
                       お預かりした個人情報は、お問い合わせへの回答以外の目的では使用いたしません。
                     </div>

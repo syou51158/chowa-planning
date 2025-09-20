@@ -56,7 +56,7 @@ const NewsGrid = ({
         {/* セクションヘッダー */}
         <SectionTransition>
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-stone mb-4 sm:mb-6 px-4 sm:px-0">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-forest mb-4 sm:mb-6 px-4 sm:px-0">
               {title}
             </h2>
             <motion.div 
@@ -95,7 +95,7 @@ const NewsGrid = ({
                       </motion.div>
                       <motion.div 
                         whileHover={{ x: -5 }}
-                        className="flex items-center gap-1 text-sm text-brand-steel transition-colors group-hover:text-brand-steel/80"
+                        className="flex items-center gap-1 text-sm text-brand-steel transition-colors group-hover:text-brand-forest"
                       >
                         <Calendar className="w-4 h-4" />
                         <span>{formatDate(post.date)}</span>
@@ -103,7 +103,7 @@ const NewsGrid = ({
                     </div>
                     
                     {/* タイトル */}
-                    <h3 className="text-lg sm:text-xl font-bold text-brand-stone mb-3 line-clamp-2 group-hover:text-brand-stone/80 transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl font-bold text-brand-forest mb-3 line-clamp-2 group-hover:text-brand-primary transition-colors duration-300">
                       {post.title}
                     </h3>
                     

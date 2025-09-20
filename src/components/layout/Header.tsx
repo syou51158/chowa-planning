@@ -75,9 +75,7 @@ export default function Header() {
                 )}>
                   調和プランニング
                 </h1>
-                <p className={cn(
-                  'text-xs md:text-sm transition-colors duration-300 text-brand-stone'
-                )}>
+                <p className={cn('text-xs md:text-sm transition-colors duration-300 text-brand-steel')}>
                   建築設計事務所
                 </p>
               </div>
@@ -156,7 +154,7 @@ export default function Header() {
                     </div>
                     <div>
                       <h2 className="text-lg font-bold text-brand-forest">調和プランニング</h2>
-                      <p className="text-sm text-brand-stone">建築設計事務所</p>
+                      <p className="text-sm text-brand-steel">建築設計事務所</p>
                     </div>
                   </div>
                   <Button

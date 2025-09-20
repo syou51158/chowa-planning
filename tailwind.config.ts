@@ -74,6 +74,7 @@ const config: Config = {
           
           // 旧カラー（互換性のため残す）
           forest: "#1E3A8A",     // primary にマッピング
+          sage: "#059669",       // success にマッピング（緑系）
           sky: "#1E40AF",        // secondary にマッピング
           earth: "#EA580C",      // accent にマッピング
         },

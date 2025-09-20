@@ -42,7 +42,7 @@ const ProjectsGrid = ({
               transition={{ duration: 1, delay: 0.3 }}
               className="h-1 bg-gradient-to-r from-brand-forest to-brand-sage mx-auto rounded-full mb-6" 
             />
-            <p className="text-base sm:text-lg text-brand-forest/70 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
+            <p className="text-base sm:text-lg text-brand-steel max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
               {description}
             </p>
           </div>
@@ -99,7 +99,7 @@ const ProjectsGrid = ({
                   <CardTitle className="text-lg sm:text-xl font-bold text-brand-forest group-hover:text-brand-sage transition-colors duration-300">
                     {project.title}
                   </CardTitle>
-                  <CardDescription className="text-sm sm:text-base text-brand-forest/70 line-clamp-2">
+                  <CardDescription className="text-sm sm:text-base text-brand-steel line-clamp-2">
                     {project.problem}
                   </CardDescription>
                 </CardHeader>
@@ -110,7 +110,7 @@ const ProjectsGrid = ({
                     {project.location && (
                       <motion.div 
                         whileHover={{ x: 5 }}
-                        className="flex items-center text-sm text-brand-forest/60 transition-colors group-hover:text-brand-forest/80"
+                        className="flex items-center text-sm text-brand-steel transition-colors group-hover:text-brand-forest"
                       >
                         <MapPin className="h-4 w-4 mr-2" />
                         <span>{project.location}</span>
@@ -118,7 +118,7 @@ const ProjectsGrid = ({
                     )}
                     <motion.div 
                       whileHover={{ x: 5 }}
-                      className="flex items-center text-sm text-brand-forest/60 transition-colors group-hover:text-brand-forest/80"
+                      className="flex items-center text-sm text-brand-steel transition-colors group-hover:text-brand-forest"
                     >
                       <Calendar className="h-4 w-4 mr-2" />
                       <span>{project.year}年</span>
@@ -126,7 +126,7 @@ const ProjectsGrid = ({
                     {project.partners && project.partners.length > 0 && (
                       <motion.div 
                         whileHover={{ x: 5 }}
-                        className="flex items-start text-sm text-brand-forest/60 transition-colors group-hover:text-brand-forest/80"
+                        className="flex items-start text-sm text-brand-steel transition-colors group-hover:text-brand-forest"
                       >
                         <Building className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
                         <span className="break-words">協力会社: {project.partners.slice(0, 2).join(', ')}{project.partners.length > 2 && ` +${project.partners.length - 2}`}</span>

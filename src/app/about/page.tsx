@@ -9,7 +9,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const companyInfo = {
-  name: '株式会社調和プランニング',
+  name: 'CHOWA Planning株式会社',
   established: '2010年',
   representative: '代表取締役 田中 太郎',
   address: '〒XXX-XXXX 東京都XXX区XXX',
@@ -18,10 +18,10 @@ const companyInfo = {
   employees: '15名',
   capital: '1,000万円',
   business: [
+    '総合企画・コンサルティング',
     '建築設計・監理',
     'リノベーション設計',
     '都市計画・まちづくりコンサルティング',
-    '建築コンサルティング',
     '環境配慮型建築の企画・設計'
   ]
 };
@@ -135,7 +135,7 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-brand-forest mb-6">
-              数字で見る調和プランニング
+              数字で見るCHOWA Planning
             </h2>
             <p className="text-lg text-brand-stone max-w-2xl mx-auto">
               これまでの歩みと実績を数字でご紹介します。
@@ -190,7 +190,7 @@ export default function AboutPage() {
               私たちの理念
             </h2>
             <p className="text-lg text-brand-stone max-w-3xl mx-auto leading-relaxed">
-              調和プランニングが大切にする価値観と、
+              CHOWA Planningが大切にする価値観と、
               <br className="hidden md:block" />
               建築を通じて実現したい社会への想いをご紹介します。
             </p>

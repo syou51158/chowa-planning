@@ -8,7 +8,7 @@ import { generateSEO } from '@/lib/seo';
 
 export const metadata = generateSEO({
   title: 'ホーム',
-  description: '調和プランニングは、誠実な監理、自然素材と持続可能性、まち文脈の読み解きを大切にする建築設計事務所です。',
+  description: 'CHOWA Planningは、誠実な監理、自然素材と持続可能性、まち文脈の読み解きを大切にする総合企画・コンサルティング会社です。',
   path: '/',
 });
 
@@ -38,7 +38,7 @@ export default async function HomePage() {
         news={news} 
         showAll={false}
         title="最新情報"
-        description="調和プランニングの最新のお知らせや活動をご紹介します。"
+        description="CHOWA Planningの最新のお知らせや活動をご紹介します。"
       />
       
       {/* お問い合わせセクション */}

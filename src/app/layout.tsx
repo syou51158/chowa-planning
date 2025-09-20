@@ -17,12 +17,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "調和プランニング - 建築設計事務所",
-  description: "誠実な監理、自然素材と持続可能性、まち文脈の読み解きを大切にする建築設計事務所です。住宅設計、商業建築、都市計画など幅広いサービスを提供しています。",
-  keywords: "建築設計, 住宅設計, 商業建築, 都市計画, 環境配慮, 持続可能, 東京, 設計事務所",
-  authors: [{ name: "調和プランニング" }],
-  creator: "調和プランニング",
-  publisher: "調和プランニング",
+  title: "CHOWA Planning - 総合企画・コンサルティング",
+  description: "誠実な監理、自然素材と持続可能性、まち文脈の読み解きを大切にする総合企画・コンサルティング会社です。住宅設計、商業建築、都市計画など幅広いサービスを提供しています。",
+  keywords: "総合企画, コンサルティング, 建築設計, 住宅設計, 商業建築, 都市計画, 環境配慮, 持続可能, 東京",
+  authors: [{ name: "CHOWA Planning" }],
+  creator: "CHOWA Planning",
+  publisher: "CHOWA Planning",
   formatDetection: {
     email: false,
     address: false,
@@ -33,17 +33,17 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "調和プランニング - 建築設計事務所",
-    description: "誠実な監理、自然素材と持続可能性、まち文脈の読み解きを大切にする建築設計事務所です。",
+    title: "CHOWA Planning - 総合企画・コンサルティング",
+    description: "誠実な監理、自然素材と持続可能性、まち文脈の読み解きを大切にする総合企画・コンサルティング会社です。",
     url: 'https://chowa-planning.com',
-    siteName: '調和プランニング',
+    siteName: 'CHOWA Planning',
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "調和プランニング - 建築設計事務所",
-    description: "誠実な監理、自然素材と持続可能性、まち文脈の読み解きを大切にする建築設計事務所です。",
+    title: "CHOWA Planning - 総合企画・コンサルティング",
+    description: "誠実な監理、自然素材と持続可能性、まち文脈の読み解きを大切にする総合企画・コンサルティング会社です。",
   },
   robots: {
     index: true,

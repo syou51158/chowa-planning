@@ -84,8 +84,8 @@ export default function Footer() {
                   <Building2 className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">調和プランニング</h3>
-                  <p className="text-white/80 text-sm">建築設計事務所</p>
+                  <h3 className="text-xl font-bold">CHOWA Planning</h3>
+                  <p className="text-white/80 text-sm">総合企画・コンサルティング</p>
                 </div>
               </div>
               

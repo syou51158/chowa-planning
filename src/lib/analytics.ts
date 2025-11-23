@@ -3,7 +3,7 @@ declare global {
     gtag: (
       command: 'config' | 'event' | 'js',
       targetId: string | Date,
-      config?: Record<string, any>
+      config?: Record<string, unknown>
     ) => void;
   }
 }
@@ -16,7 +16,7 @@ export const isGAEnabled = !!GA_MEASUREMENT_ID;
 // ページビューを送信
 export const pageview = (url: string) => {
   if (!isGAEnabled || typeof window === 'undefined') return;
-  
+
   window.gtag('config', GA_MEASUREMENT_ID!, {
     page_path: url,
   });
@@ -35,7 +35,7 @@ export const event = ({
   value?: number;
 }) => {
   if (!isGAEnabled || typeof window === 'undefined') return;
-  
+
   window.gtag('event', action, {
     event_category: category,
     event_label: label,
@@ -79,7 +79,7 @@ export const trackExternalLink = (url: string) => {
 // Google Analytics スクリプトタグを生成
 export const getGAScript = () => {
   if (!isGAEnabled) return null;
-  
+
   return {
     src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`,
     strategy: 'afterInteractive' as const,
@@ -89,7 +89,7 @@ export const getGAScript = () => {
 // Google Analytics 初期化スクリプト
 export const getGAInitScript = () => {
   if (!isGAEnabled) return null;
-  
+
   return `
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}

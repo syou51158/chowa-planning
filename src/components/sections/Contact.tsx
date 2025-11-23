@@ -57,7 +57,7 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -66,7 +66,7 @@ const Contact = () => {
         },
         body: JSON.stringify(formData),
       });
-      
+
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({
@@ -80,7 +80,7 @@ const Contact = () => {
       } else {
         setSubmitStatus('error');
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -107,7 +107,7 @@ const Contact = () => {
             お気軽にお問い合わせください。
           </p>
         </motion.div>
-        
+
         <div className="grid lg:grid-cols-2 gap-12">
           {/* お問い合わせフォーム */}
           <motion.div
@@ -121,19 +121,19 @@ const Contact = () => {
                 <h3 className="text-3xl font-bold text-slate-800 mb-8">
                   お問い合わせフォーム
                 </h3>
-                
+
                 {submitStatus === 'success' && (
                   <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
                     <p className="text-green-800">お問い合わせありがとうございます。担当者より折り返しご連絡いたします。</p>
                   </div>
                 )}
-                
+
                 {submitStatus === 'error' && (
                   <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
                     <p className="text-red-800">送信に失敗しました。お手数ですが、再度お試しください。</p>
                   </div>
                 )}
-                
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* お名前 */}
                   <div>
@@ -150,7 +150,7 @@ const Contact = () => {
                       placeholder="山田 太郎"
                     />
                   </div>
-                  
+
                   {/* メールアドレス */}
                   <div>
                     <Label htmlFor="email" className="text-brand-forest font-medium">
@@ -166,7 +166,7 @@ const Contact = () => {
                       placeholder="example@email.com"
                     />
                   </div>
-                  
+
                   {/* 電話番号 */}
                   <div>
                     <Label htmlFor="phone" className="text-brand-forest font-medium">
@@ -181,7 +181,7 @@ const Contact = () => {
                       placeholder="03-1234-5678"
                     />
                   </div>
-                  
+
                   {/* 会社名・団体名 */}
                   <div>
                     <Label htmlFor="company" className="text-brand-forest font-medium">
@@ -196,7 +196,7 @@ const Contact = () => {
                       placeholder="株式会社○○○"
                     />
                   </div>
-                  
+
                   {/* お問い合わせ種別 */}
                   <div>
                     <Label className="text-brand-forest font-medium">
@@ -219,7 +219,7 @@ const Contact = () => {
                       </SelectContent>
                     </Select>
                   </div>
-                  
+
                   {/* メッセージ */}
                   <div>
                     <Label htmlFor="message" className="text-brand-forest font-medium">
@@ -235,7 +235,7 @@ const Contact = () => {
                       placeholder="ご相談内容やご質問をお聞かせください"
                     />
                   </div>
-                  
+
                   {/* 送信ボタン */}
                   <Button
                     type="submit"
@@ -258,7 +258,7 @@ const Contact = () => {
               </CardContent>
             </Card>
           </motion.div>
-          
+
           {/* 連絡先情報 */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
@@ -270,7 +270,7 @@ const Contact = () => {
             <h3 className="text-3xl font-bold text-slate-800 mb-10">
               その他のお問い合わせ方法
             </h3>
-            
+
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
@@ -304,7 +304,7 @@ const Contact = () => {
                 </motion.div>
               );
             })}
-            
+
             {/* 営業時間 */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

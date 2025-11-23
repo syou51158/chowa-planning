@@ -2,11 +2,11 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { 
-  Building2, 
-  MapPin, 
-  Phone, 
-  Mail, 
+import {
+  Building2,
+  MapPin,
+  Phone,
+  Mail,
   Clock,
   Facebook,
   Twitter,
@@ -58,16 +58,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-brand-primary text-white relative overflow-hidden" style={{ backgroundColor: '#1E3A8A', color: 'white' }}>
-      {/* 強制的にダーク背景を適用してコントラストを確保 */}
+    <footer className="bg-brand-primary text-white relative overflow-hidden">
       {/* 背景装飾 */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-48 translate-y-48" />
-        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-white rounded-full -translate-y-32" />
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48 blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-accent rounded-full translate-x-48 translate-y-48 blur-3xl" />
       </div>
 
-      <div className="relative">
+      <div className="relative z-10">
         {/* メインフッター */}
         <div className="container mx-auto px-4 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
@@ -80,36 +78,36 @@ export default function Footer() {
               className="lg:col-span-1"
             >
               <div className="flex items-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-brand-accent to-yellow-600 rounded-xl flex items-center justify-center shadow-lg border border-white/10">
                   <Building2 className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">調和プランニング</h3>
-                  <p className="text-white/80 text-sm">建築設計事務所</p>
+                  <h3 className="text-xl font-bold tracking-wide">調和プランニング</h3>
+                  <p className="text-brand-concrete text-sm">建築設計事務所</p>
                 </div>
               </div>
-              
-              <p className="text-white/90 mb-6 leading-relaxed">
+
+              <p className="text-brand-stone mb-6 leading-relaxed text-sm">
                 誠実な監理、自然素材と持続可能性、まち文脈の読み解きを大切にする建築設計事務所です。
               </p>
-              
+
               {/* 連絡先情報 */}
               <div className="space-y-3">
                 <div className="flex items-start space-x-3">
-                  <MapPin className="w-4 h-4 mt-1 text-white/70 flex-shrink-0" />
-                  <span className="text-sm text-white/90">{contactInfo.address}</span>
+                  <MapPin className="w-4 h-4 mt-1 text-brand-accent flex-shrink-0" />
+                  <span className="text-sm text-brand-stone">{contactInfo.address}</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Phone className="w-4 h-4 text-white/70 flex-shrink-0" />
-                  <span className="text-sm text-white/90">{contactInfo.phone}</span>
+                  <Phone className="w-4 h-4 text-brand-accent flex-shrink-0" />
+                  <span className="text-sm text-brand-stone">{contactInfo.phone}</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Mail className="w-4 h-4 text-white/70 flex-shrink-0" />
-                  <span className="text-sm text-white/90">{contactInfo.email}</span>
+                  <Mail className="w-4 h-4 text-brand-accent flex-shrink-0" />
+                  <span className="text-sm text-brand-stone">{contactInfo.email}</span>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <Clock className="w-4 h-4 mt-1 text-white/70 flex-shrink-0" />
-                  <span className="text-sm text-white/90">{contactInfo.hours}</span>
+                  <Clock className="w-4 h-4 mt-1 text-brand-accent flex-shrink-0" />
+                  <span className="text-sm text-brand-stone">{contactInfo.hours}</span>
                 </div>
               </div>
             </motion.div>
@@ -121,13 +119,13 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-semibold mb-6">サービス</h4>
+              <h4 className="text-lg font-semibold mb-6 text-white">サービス</h4>
               <ul className="space-y-3">
                 {navigation.services.map((item) => (
                   <li key={item.name}>
-                    <Link 
+                    <Link
                       href={item.href}
-                      className="text-white/90 hover:text-white transition-colors duration-300 text-sm block py-1 hover:translate-x-1 transform transition-transform"
+                      className="text-brand-stone hover:text-brand-accent transition-colors duration-300 text-sm block py-1 hover:translate-x-1 transform transition-transform"
                     >
                       {item.name}
                     </Link>
@@ -143,13 +141,13 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-semibold mb-6">会社案内</h4>
+              <h4 className="text-lg font-semibold mb-6 text-white">会社案内</h4>
               <ul className="space-y-3">
                 {navigation.company.map((item) => (
                   <li key={item.name}>
-                    <Link 
+                    <Link
                       href={item.href}
-                      className="text-white/90 hover:text-white transition-colors duration-300 text-sm block py-1 hover:translate-x-1 transform transition-transform"
+                      className="text-brand-stone hover:text-brand-accent transition-colors duration-300 text-sm block py-1 hover:translate-x-1 transform transition-transform"
                     >
                       {item.name}
                     </Link>
@@ -165,18 +163,18 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-semibold mb-6">お問い合わせ</h4>
-              
+              <h4 className="text-lg font-semibold mb-6 text-white">お問い合わせ</h4>
+
               <Link href="/contact">
-                <Button className="w-full bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white hover:text-brand-forest transition-all duration-300 rounded-xl mb-6">
+                <Button className="w-full bg-brand-accent hover:bg-brand-warning text-brand-primary font-bold border-0 shadow-lg hover:shadow-brand-accent/20 transition-all duration-300 rounded-xl mb-6 py-6">
                   <Phone className="w-4 h-4 mr-2" />
                   お問い合わせ
                 </Button>
               </Link>
-              
+
               {/* SNSリンク */}
               <div>
-                <h5 className="text-sm font-medium mb-4 text-white/90">フォローする</h5>
+                <h5 className="text-sm font-medium mb-4 text-brand-stone">フォローする</h5>
                 <div className="flex space-x-3">
                   {socialLinks.map((social) => {
                     const Icon = social.icon;
@@ -186,7 +184,7 @@ export default function Footer() {
                         href={social.href}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white hover:text-brand-forest transition-all duration-300"
+                        className="w-10 h-10 bg-white/5 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-brand-accent hover:text-white text-brand-stone transition-all duration-300 border border-white/10"
                         aria-label={social.name}
                       >
                         <Icon className="w-4 h-4" />
@@ -199,33 +197,33 @@ export default function Footer() {
           </div>
         </div>
 
-        <Separator className="bg-white/20" />
+        <Separator className="bg-white/10" />
 
         {/* フッター下部 */}
-        <div className="container mx-auto px-4 py-6">
+        <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="flex flex-wrap items-center justify-center md:justify-start space-x-6 text-sm text-white/90"
+              className="flex flex-wrap items-center justify-center md:justify-start space-x-6 text-sm text-brand-stone"
             >
               {navigation.legal.map((item, index) => (
                 <span key={item.name} className="flex items-center">
-                  <Link 
+                  <Link
                     href={item.href}
-                    className="hover:text-white transition-colors duration-300"
+                    className="hover:text-brand-accent transition-colors duration-300"
                   >
                     {item.name}
                   </Link>
                   {index < navigation.legal.length - 1 && (
-                    <span className="ml-6 text-white/40">|</span>
+                    <span className="ml-6 text-white/10">|</span>
                   )}
                 </span>
               ))}
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -233,15 +231,15 @@ export default function Footer() {
               viewport={{ once: true }}
               className="flex items-center space-x-4"
             >
-              <p className="text-sm text-white/90">
+              <p className="text-sm text-brand-stone">
                 © 2024 株式会社調和プランニング. All rights reserved.
               </p>
-              
+
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={scrollToTop}
-                className="p-2 rounded-xl bg-white/20 backdrop-blur-sm text-white hover:bg-white hover:text-brand-forest transition-all duration-300"
+                className="p-2 rounded-xl bg-white/5 backdrop-blur-sm text-brand-stone hover:bg-brand-accent hover:text-white transition-all duration-300 border border-white/10"
                 aria-label="ページトップへ戻る"
               >
                 <ArrowUp className="w-4 h-4" />

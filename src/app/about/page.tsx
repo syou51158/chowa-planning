@@ -2,11 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Building2, Users, Award, Heart, Target, Lightbulb, HardHat } from 'lucide-react';
+import { Users, Award, Heart, Target, Lightbulb, HardHat } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const companyInfo = {
   name: '株式会社調和プランニング',
@@ -81,7 +79,7 @@ export default function AboutPage() {
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
               <pattern id="about-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5"/>
+                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5" />
               </pattern>
             </defs>
             <rect width="100" height="100" fill="url(#about-grid)" />
@@ -123,7 +121,7 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
-      
+
       {/* 実績・数字 */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
@@ -141,7 +139,7 @@ export default function AboutPage() {
               これまでの歩みと実績を数字でご紹介します。
             </p>
           </motion.div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {achievements.map((achievement, index) => {
               const Icon = achievement.icon;
@@ -175,7 +173,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      
+
       {/* 企業理念 */}
       <section className="py-16 md:py-24 bg-brand-natural/30">
         <div className="container mx-auto px-4">
@@ -195,7 +193,7 @@ export default function AboutPage() {
               建築を通じて実現したい社会への想いをご紹介します。
             </p>
           </motion.div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {philosophy.map((item, index) => {
               const Icon = item.icon;
@@ -227,7 +225,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      
+
       {/* 会社概要 */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
@@ -245,7 +243,7 @@ export default function AboutPage() {
               調和プランニングの基本情報をご紹介します。
             </p>
           </motion.div>
-          
+
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -278,7 +276,7 @@ export default function AboutPage() {
                         <p className="text-brand-stone">{companyInfo.capital}</p>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-6">
                       <div>
                         <h3 className="text-lg font-semibold text-brand-forest mb-2">所在地</h3>
@@ -311,7 +309,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      
+
       {/* CTA */}
       <section className="py-16 md:py-24 bg-brand-forest text-white">
         <div className="container mx-auto px-4 text-center">

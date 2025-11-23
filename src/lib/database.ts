@@ -10,7 +10,7 @@ export interface InquiryRecord extends ContactFormData {
 }
 
 // メモリ内ストレージ（実際のアプリケーションではデータベースを使用）
-let inquiries: InquiryRecord[] = [];
+const inquiries: InquiryRecord[] = [];
 
 // お問い合わせ保存
 export async function saveInquiry(data: ContactFormData): Promise<string> {
@@ -21,9 +21,9 @@ export async function saveInquiry(data: ContactFormData): Promise<string> {
       createdAt: new Date().toISOString(),
       status: 'new'
     };
-    
+
     inquiries.push(inquiry);
-    
+
     console.log('お問い合わせ保存完了:', inquiry.id);
     return inquiry.id;
   } catch (error) {
@@ -44,8 +44,8 @@ export async function getInquiry(id: string): Promise<InquiryRecord | null> {
 
 // お問い合わせステータス更新
 export async function updateInquiryStatus(
-  id: string, 
-  status: InquiryRecord['status'], 
+  id: string,
+  status: InquiryRecord['status'],
   notes?: string
 ): Promise<boolean> {
   try {
@@ -53,12 +53,12 @@ export async function updateInquiryStatus(
     if (!inquiry) {
       return false;
     }
-    
+
     inquiry.status = status;
     if (notes) {
       inquiry.notes = notes;
     }
-    
+
     console.log('お問い合わせステータス更新:', id, status);
     return true;
   } catch (error) {
@@ -113,8 +113,8 @@ export async function getInquiries() {
 
 // Google Analytics イベント追跡
 export async function trackEvent(
-  eventName: string, 
-  parameters: Record<string, any>
+  eventName: string,
+  parameters: Record<string, unknown>
 ): Promise<void> {
   try {
     // 実際のアプリケーションでは、Google Analytics 4のMeasurement Protocolを使用
@@ -122,10 +122,10 @@ export async function trackEvent(
       event: eventName,
       parameters
     });
-    
+
     // gtag関数が利用可能な場合
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', eventName, parameters);
+    if (typeof window !== 'undefined' && (window as Window & typeof globalThis).gtag) {
+      (window as Window & typeof globalThis).gtag('event', eventName, parameters);
     }
   } catch (error) {
     console.error('Analytics追跡エラー:', error);

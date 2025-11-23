@@ -1,13 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
+import { CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { AnimatedButton, CTAButton } from '@/components/ui/animated-button';
 import { AnimatedCard } from '@/components/ui/animated-card';
 import { SectionTransition, StaggerContainer, StaggerItem } from '@/components/ui/page-transition';
 import Link from 'next/link';
-import { NewsPost } from '@/lib/types';
+import { NewsPost } from '@/lib/data';
 import { Calendar, ArrowRight, ExternalLink } from 'lucide-react';
 import { format } from 'date-fns';
 import { ja } from 'date-fns/locale';
@@ -19,9 +19,9 @@ interface NewsGridProps {
   description?: string;
 }
 
-const NewsGrid = ({ 
-  news, 
-  showAll = false, 
+const NewsGrid = ({
+  news,
+  showAll = false,
   title = "最新情報",
   description = "調和プランニングの最新のお知らせや活動をご紹介します。"
 }: NewsGridProps) => {
@@ -37,16 +37,26 @@ const NewsGrid = ({
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'お知らせ':
+      case 'news':
         return 'bg-brand-sky text-white';
-      case 'プロジェクト':
+      case 'project':
         return 'bg-brand-stone text-white';
-      case 'メディア':
+      case 'award':
         return 'bg-brand-steel text-white';
-      case 'イベント':
+      case 'event':
         return 'bg-purple-500 text-white';
       default:
         return 'bg-gray-500 text-white';
+    }
+  };
+
+  const getCategoryLabel = (category: string) => {
+    switch (category) {
+      case 'news': return 'お知らせ';
+      case 'project': return 'プロジェクト';
+      case 'award': return '受賞';
+      case 'event': return 'イベント';
+      default: return category;
     }
   };
 
@@ -59,28 +69,28 @@ const NewsGrid = ({
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-forest mb-4 sm:mb-6 px-4 sm:px-0">
               {title}
             </h2>
-            <motion.div 
+            <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: 96 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="w-24 h-1 bg-gradient-to-r from-brand-stone to-brand-steel mx-auto rounded-full mb-6" 
+              className="w-24 h-1 bg-gradient-to-r from-brand-stone to-brand-steel mx-auto rounded-full mb-6"
             />
             <p className="text-base sm:text-lg md:text-xl text-brand-steel max-w-3xl mx-auto leading-relaxed font-medium px-4 sm:px-0">
               {description}
             </p>
           </div>
         </SectionTransition>
-        
+
         {/* ニュースグリッド */}
         {displayNews.length > 0 ? (
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            {displayNews.map((post, index) => (
-              <StaggerItem key={post.slug}>
-                <AnimatedCard 
-                  variant="news"
+            {displayNews.map((post) => (
+              <StaggerItem key={post.id}>
+                <AnimatedCard
+                  variant="hover-lift"
                   className="h-full group cursor-pointer"
-                  onClick={() => window.location.href = `/news/${post.slug}`}
+                  onClick={() => window.location.href = `/news/${post.id}`}
                 >
                   <CardContent className="p-4 sm:p-6">
                     {/* カテゴリと日付 */}
@@ -90,30 +100,30 @@ const NewsGrid = ({
                         whileTap={{ scale: 0.95 }}
                       >
                         <Badge className={getCategoryColor(post.category)}>
-                          {post.category}
+                          {getCategoryLabel(post.category)}
                         </Badge>
                       </motion.div>
-                      <motion.div 
+                      <motion.div
                         whileHover={{ x: -5 }}
                         className="flex items-center gap-1 text-sm text-brand-steel transition-colors group-hover:text-brand-forest"
                       >
                         <Calendar className="w-4 h-4" />
-                        <span>{formatDate(post.date)}</span>
+                        <span>{formatDate(post.publishedAt)}</span>
                       </motion.div>
                     </div>
-                    
+
                     {/* タイトル */}
                     <h3 className="text-lg sm:text-xl font-bold text-brand-forest mb-3 line-clamp-2 group-hover:text-brand-primary transition-colors duration-300">
                       {post.title}
                     </h3>
-                    
+
                     {/* 概要 */}
                     <p className="text-sm sm:text-base text-brand-steel mb-4 sm:mb-6 line-clamp-3 leading-relaxed">
                       {post.excerpt}
                     </p>
-                    
+
                     {/* 詳細リンク */}
-                    <Link href={`/news/${post.slug}`} onClick={(e) => e.stopPropagation()}>
+                    <Link href={`/news/${post.id}`} onClick={(e) => e.stopPropagation()}>
                       <AnimatedButton
                         variant="ghost"
                         className="w-full justify-between text-brand-steel hover:bg-brand-steel/10 font-medium"
@@ -123,9 +133,9 @@ const NewsGrid = ({
                         詳細を読む
                       </AnimatedButton>
                     </Link>
-                    
+
                     {/* ホバー時のオーバーレイアイコン */}
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
                       className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -168,13 +178,13 @@ const NewsGrid = ({
             </div>
           </motion.div>
         )}
-        
+
         {/* 全て見るボタン */}
         {!showAll && news.length > 3 && (
           <SectionTransition delay={0.4}>
             <div className="text-center mt-8 sm:mt-12">
               <Link href="/news">
-                <CTAButton 
+                <CTAButton
                   variant="primary"
                   size="lg"
                   className="bg-brand-stone hover:bg-brand-stone/90 text-white px-8 py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl font-semibold"

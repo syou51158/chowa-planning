@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, HTMLMotionProps } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Button, ButtonProps } from '@/components/ui/button';
 import { ReactNode, forwardRef } from 'react';
@@ -145,7 +145,7 @@ const AnimatedButton = forwardRef<HTMLButtonElement, AnimatedButtonProps>(
             }}
           />
         )}
-        
+
         <Button
           ref={ref}
           variant={isGradient || isGlow ? 'default' : variant}
@@ -175,7 +175,7 @@ const AnimatedButton = forwardRef<HTMLButtonElement, AnimatedButtonProps>(
               transition={{ duration: 0.2 }}
             />
           )}
-          
+
           <span className="relative z-10 flex items-center justify-center">
             {buttonContent}
           </span>
@@ -194,7 +194,7 @@ interface CTAButtonProps extends Omit<AnimatedButtonProps, 'variant'> {
 
 export function CTAButton({ variant = 'primary', ...props }: CTAButtonProps) {
   const buttonVariant = variant === 'primary' ? 'gradient' : variant === 'secondary' ? 'glow' : 'outline';
-  
+
   return (
     <AnimatedButton
       variant={buttonVariant}
@@ -233,10 +233,10 @@ export function FloatingActionButton({
         variant="gradient"
         size="icon"
         className={cn(
-        'w-14 h-14 rounded-full shadow-2xl border-2 border-brand-accent/20',
-        'hover:shadow-brand-accent/30',
-        className
-      )}
+          'w-14 h-14 rounded-full shadow-2xl border-2 border-brand-accent/20',
+          'hover:shadow-brand-accent/30',
+          className
+        )}
         glow
         pulse
         {...props}
@@ -264,7 +264,7 @@ export function IconButton({ icon, tooltip, className, ...props }: IconButtonPro
       >
         {icon}
       </AnimatedButton>
-      
+
       {tooltip && (
         <motion.div
           initial={{ opacity: 0, y: 10, scale: 0.8 }}

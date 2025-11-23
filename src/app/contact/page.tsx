@@ -7,15 +7,14 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock, 
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
   Send,
   CheckCircle,
-  AlertCircle,
-  HardHat
+  AlertCircle
 } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
@@ -69,7 +68,7 @@ export default function ContactPage() {
     location: '',
     message: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -108,7 +107,7 @@ export default function ContactPage() {
       } else {
         throw new Error('送信に失敗しました');
       }
-    } catch (error) {
+    } catch {
       toast.error('送信に失敗しました。しばらく時間をおいて再度お試しください。');
     } finally {
       setIsSubmitting(false);
@@ -124,7 +123,7 @@ export default function ContactPage() {
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
               <pattern id="contact-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5"/>
+                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5" />
               </pattern>
             </defs>
             <rect width="100" height="100" fill="url(#contact-grid)" />
@@ -149,7 +148,7 @@ export default function ContactPage() {
           </motion.div>
         </div>
       </section>
-      
+
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="grid lg:grid-cols-3 gap-12">
           {/* お問い合わせフォーム */}
@@ -172,7 +171,7 @@ export default function ContactPage() {
                       通常、1-2営業日以内にご返信いたします。
                     </p>
                   </div>
-                  
+
                   {isSubmitted && (
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
@@ -188,7 +187,7 @@ export default function ContactPage() {
                       </div>
                     </motion.div>
                   )}
-                  
+
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
@@ -205,7 +204,7 @@ export default function ContactPage() {
                           placeholder="山田 太郎"
                         />
                       </div>
-                      
+
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-brand-forest font-semibold">
                           メールアドレス <span className="text-red-500">*</span>
@@ -221,7 +220,7 @@ export default function ContactPage() {
                         />
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="phone" className="text-brand-forest font-semibold">
@@ -236,7 +235,7 @@ export default function ContactPage() {
                           placeholder="03-1234-5678"
                         />
                       </div>
-                      
+
                       <div className="space-y-2">
                         <Label htmlFor="company" className="text-brand-forest font-semibold">
                           会社名・団体名
@@ -251,7 +250,7 @@ export default function ContactPage() {
                         />
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label className="text-brand-forest font-semibold">
@@ -270,7 +269,7 @@ export default function ContactPage() {
                           </SelectContent>
                         </Select>
                       </div>
-                      
+
                       <div className="space-y-2">
                         <Label className="text-brand-forest font-semibold">
                           ご予算
@@ -289,7 +288,7 @@ export default function ContactPage() {
                         </Select>
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="timeline" className="text-brand-forest font-semibold">
@@ -304,7 +303,7 @@ export default function ContactPage() {
                           placeholder="2024年春頃開始希望"
                         />
                       </div>
-                      
+
                       <div className="space-y-2">
                         <Label htmlFor="location" className="text-brand-forest font-semibold">
                           建設予定地・所在地
@@ -319,7 +318,7 @@ export default function ContactPage() {
                         />
                       </div>
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="message" className="text-brand-forest font-semibold">
                         詳細・ご要望 <span className="text-red-500">*</span>
@@ -339,7 +338,7 @@ export default function ContactPage() {
 ・環境に配慮したオフィスビルの設計を依頼したい"
                       />
                     </div>
-                    
+
                     <div className="pt-4">
                       <Button
                         type="submit"
@@ -359,7 +358,7 @@ export default function ContactPage() {
                         )}
                       </Button>
                     </div>
-                    
+
                     <div className="text-sm text-brand-steel leading-relaxed">
                       <AlertCircle className="w-4 h-4 inline mr-1" />
                       お預かりした個人情報は、お問い合わせへの回答以外の目的では使用いたしません。
@@ -369,7 +368,7 @@ export default function ContactPage() {
               </Card>
             </motion.div>
           </div>
-          
+
           {/* 連絡先情報 */}
           <div className="space-y-8">
             <motion.div
@@ -383,7 +382,7 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold text-brand-forest mb-6">
                     お電話でのお問い合わせ
                   </h3>
-                  
+
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 bg-brand-forest/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -398,7 +397,7 @@ export default function ContactPage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 bg-brand-forest/10 rounded-full flex items-center justify-center flex-shrink-0">
                         <Clock className="w-5 h-5 text-brand-forest" />
@@ -412,7 +411,7 @@ export default function ContactPage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 bg-brand-forest/10 rounded-full flex items-center justify-center flex-shrink-0">
                         <Mail className="w-5 h-5 text-brand-forest" />
@@ -426,7 +425,7 @@ export default function ContactPage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 bg-brand-forest/10 rounded-full flex items-center justify-center flex-shrink-0">
                         <MapPin className="w-5 h-5 text-brand-forest" />
@@ -444,7 +443,7 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}

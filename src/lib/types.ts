@@ -31,6 +31,8 @@ export type ContactFormData = {
   name: string;
   email: string;
   phone?: string;
+  company?: string;
+  inquiryType?: string;
   message: string;
   budgetRange?: string;
   timeframe?: string;

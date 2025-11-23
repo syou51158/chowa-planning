@@ -2,24 +2,23 @@
 
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+
 import { Button } from '@/components/ui/button';
-import { 
-  Home, 
-  HardHat, 
-  MapPin, 
-  Lightbulb, 
-  TreePine, 
-  Users, 
-  Clock, 
+import {
+  Home,
+  HardHat,
+  MapPin,
+  Lightbulb,
+  TreePine,
+  Users,
+  Clock,
   CheckCircle,
   ArrowRight,
   Star,
-  Building2,
-  Hammer
+
 } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
+
 
 const services = [
   {
@@ -182,7 +181,7 @@ export default function ServicesPage() {
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
               <pattern id="services-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5"/>
+                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5" />
               </pattern>
             </defs>
             <rect width="100" height="100" fill="url(#services-grid)" />
@@ -224,7 +223,7 @@ export default function ServicesPage() {
           </motion.div>
         </div>
       </section>
-      
+
       {/* サービス一覧 */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
@@ -244,7 +243,7 @@ export default function ServicesPage() {
               幅広い建築サービスを提供しています。
             </p>
           </motion.div>
-          
+
           <div className="space-y-12">
             {services.map((service, index) => {
               const Icon = service.icon;
@@ -287,7 +286,7 @@ export default function ServicesPage() {
                             </div>
                           </div>
                         </div>
-                        
+
                         {/* 特徴・サービス内容 */}
                         <div className="p-8 lg:p-12 bg-white">
                           <h4 className="text-lg font-semibold text-brand-forest mb-4">
@@ -302,7 +301,7 @@ export default function ServicesPage() {
                             ))}
                           </ul>
                         </div>
-                        
+
                         {/* プロセス */}
                         <div className="p-8 lg:p-12 bg-gray-50">
                           <h4 className="text-lg font-semibold text-brand-forest mb-4">
@@ -337,7 +336,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-      
+
       {/* 選ばれる理由 */}
       <section className="py-16 md:py-24 bg-brand-natural/30">
         <div className="container mx-auto px-4">
@@ -355,7 +354,7 @@ export default function ServicesPage() {
               お客様に選ばれ続ける理由をご紹介します。
             </p>
           </motion.div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {advantages.map((advantage, index) => {
               const Icon = advantage.icon;
@@ -387,7 +386,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-      
+
       {/* CTA */}
       <section className="py-16 md:py-24 bg-brand-forest text-white">
         <div className="container mx-auto px-4 text-center">

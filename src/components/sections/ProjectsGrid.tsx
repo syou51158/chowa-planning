@@ -1,15 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { AnimatedButton, CTAButton } from '@/components/ui/animated-button';
 import { AnimatedCard } from '@/components/ui/animated-card';
 import { SectionTransition, StaggerContainer, StaggerItem } from '@/components/ui/page-transition';
-import { ArrowRight, Calendar, MapPin, HardHat, ExternalLink } from 'lucide-react';
+import { ArrowRight, Calendar, MapPin, HardHat, ExternalLink, Users } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Project } from '@/lib/types';
+import { Project } from '@/lib/data';
 
 interface ProjectsGridProps {
   projects: Project[];
@@ -18,9 +18,9 @@ interface ProjectsGridProps {
   description?: string;
 }
 
-const ProjectsGrid = ({ 
-  projects, 
-  showAll = false, 
+const ProjectsGrid = ({
+  projects,
+  showAll = false,
   title = "主要実績",
   description = "これまでに手がけた代表的なプロジェクトをご紹介します。"
 }: ProjectsGridProps) => {
@@ -35,12 +35,12 @@ const ProjectsGrid = ({
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-forest mb-4 sm:mb-6 px-4 sm:px-0">
               {title}
             </h2>
-            <motion.div 
+            <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: 96 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="h-1 bg-gradient-to-r from-brand-forest to-brand-sage mx-auto rounded-full mb-6" 
+              className="h-1 bg-gradient-to-r from-brand-forest to-brand-sage mx-auto rounded-full mb-6"
             />
             <p className="text-base sm:text-lg text-brand-steel max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
               {description}
@@ -50,22 +50,28 @@ const ProjectsGrid = ({
 
         {/* Projects Grid */}
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
-          {displayProjects.map((project, index) => (
-            <StaggerItem key={project.slug}>
-              <AnimatedCard 
-                variant="project"
+          {displayProjects.map((project) => (
+            <StaggerItem key={project.id}>
+              <AnimatedCard
+                variant="hover-lift"
                 className="h-full group cursor-pointer"
-                onClick={() => window.location.href = `/projects/${project.slug}`}
+                onClick={() => window.location.href = `/projects/${project.id}`}
               >
                 {/* Project Image */}
                 <div className="relative h-40 sm:h-48 overflow-hidden">
-                  <Image
-                    src={project.hero}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <motion.div 
+                  {project.images && project.images.length > 0 ? (
+                    <Image
+                      src={project.images[0]}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                      <HardHat className="w-12 h-12 text-gray-400" />
+                    </div>
+                  )}
+                  <motion.div
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
                     className="absolute inset-0 bg-gradient-to-t from-brand-forest/80 via-transparent to-transparent flex items-end justify-center pb-4"
@@ -100,7 +106,7 @@ const ProjectsGrid = ({
                     {project.title}
                   </CardTitle>
                   <CardDescription className="text-sm sm:text-base text-brand-steel line-clamp-2">
-                    {project.problem}
+                    {project.description}
                   </CardDescription>
                 </CardHeader>
 
@@ -108,7 +114,7 @@ const ProjectsGrid = ({
                   {/* Project Details */}
                   <div className="space-y-2 mb-4">
                     {project.location && (
-                      <motion.div 
+                      <motion.div
                         whileHover={{ x: 5 }}
                         className="flex items-center text-sm text-brand-steel transition-colors group-hover:text-brand-forest"
                       >
@@ -116,28 +122,28 @@ const ProjectsGrid = ({
                         <span>{project.location}</span>
                       </motion.div>
                     )}
-                    <motion.div 
+                    <motion.div
                       whileHover={{ x: 5 }}
                       className="flex items-center text-sm text-brand-steel transition-colors group-hover:text-brand-forest"
                     >
                       <Calendar className="h-4 w-4 mr-2" />
                       <span>{project.year}年</span>
                     </motion.div>
-                    {project.partners && project.partners.length > 0 && (
-                      <motion.div 
+                    {project.client && (
+                      <motion.div
                         whileHover={{ x: 5 }}
                         className="flex items-start text-sm text-brand-steel transition-colors group-hover:text-brand-forest"
                       >
-                        <Building className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
-                        <span className="break-words">協力会社: {project.partners.slice(0, 2).join(', ')}{project.partners.length > 2 && ` +${project.partners.length - 2}`}</span>
+                        <Users className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
+                        <span className="break-words">クライアント: {project.client}</span>
                       </motion.div>
                     )}
                   </div>
 
                   {/* View Details Button */}
-                  <Link href={`/projects/${project.slug}`} onClick={(e) => e.stopPropagation()}>
-                    <AnimatedButton 
-                      variant="outline" 
+                  <Link href={`/projects/${project.id}`} onClick={(e) => e.stopPropagation()}>
+                    <AnimatedButton
+                      variant="outline"
                       className="w-full border-brand-forest text-brand-forest hover:bg-brand-forest hover:text-white group/btn"
                       icon={<ArrowRight className="h-4 w-4" />}
                       iconPosition="right"
@@ -156,7 +162,7 @@ const ProjectsGrid = ({
           <SectionTransition delay={0.3}>
             <div className="text-center">
               <Link href="/projects">
-                <CTAButton 
+                <CTAButton
                   variant="primary"
                   icon={<ArrowRight className="h-5 w-5" />}
                   iconPosition="right"

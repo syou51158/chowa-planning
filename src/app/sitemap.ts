@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next';
-import { getAllProjects, getAllNewsPosts } from '@/lib/data';
+import { getProjects, getNews } from '@/lib/data';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://chowa-planning.com';
-  
+
   // 静的ページ
   const staticPages = [
     {
@@ -45,19 +45,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   // プロジェクトページ
-  const projects = await getAllProjects();
+  const projects = await getProjects();
   const projectPages = projects.map((project) => ({
-    url: `${baseUrl}/projects/${project.slug}`,
-    lastModified: new Date(project.updatedAt || project.createdAt),
+    url: `${baseUrl}/projects/${project.id}`,
+    lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
 
   // ニュースページ
-  const newsPosts = await getAllNewsPosts();
+  const newsPosts = await getNews();
   const newsPages = newsPosts.map((post) => ({
-    url: `${baseUrl}/news/${post.slug}`,
-    lastModified: new Date(post.updatedAt || post.publishedAt),
+    url: `${baseUrl}/news/${post.id}`,
+    lastModified: new Date(post.publishedAt),
     changeFrequency: 'monthly' as const,
     priority: 0.5,
   }));

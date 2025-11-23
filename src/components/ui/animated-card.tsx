@@ -8,8 +8,7 @@ import { ReactNode } from 'react';
 interface AnimatedCardProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
   children: ReactNode;
   className?: string;
-  hoverScale?: number;
-  hoverY?: number;
+
   delay?: number;
   duration?: number;
   variant?: 'default' | 'hover-lift' | 'hover-glow' | 'hover-tilt';
@@ -68,8 +67,7 @@ const cardVariants = {
 export function AnimatedCard({
   children,
   className,
-  hoverScale = 1.02,
-  hoverY = -5,
+
   delay = 0,
   duration = 0.6,
   variant = 'default',
@@ -188,7 +186,7 @@ export function ServiceCard({
           {description}
         </motion.p>
       </AnimatedCardHeader>
-      
+
       {features && (
         <AnimatedCardContent>
           <motion.ul
@@ -225,7 +223,7 @@ interface ProjectCardProps {
   location?: string;
   className?: string;
   delay?: number;
-  href?: string;
+
 }
 
 export function ProjectCard({
@@ -237,7 +235,7 @@ export function ProjectCard({
   location,
   className,
   delay = 0,
-  href,
+
 }: ProjectCardProps) {
   return (
     <AnimatedCard
@@ -257,7 +255,7 @@ export function ProjectCard({
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         </div>
       )}
-      
+
       <AnimatedCardHeader>
         <div className="flex items-center justify-between mb-2">
           <motion.span
@@ -279,7 +277,7 @@ export function ProjectCard({
             </motion.span>
           )}
         </div>
-        
+
         <motion.h3
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -288,7 +286,7 @@ export function ProjectCard({
         >
           {title}
         </motion.h3>
-        
+
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -297,7 +295,7 @@ export function ProjectCard({
         >
           {description}
         </motion.p>
-        
+
         {location && (
           <motion.p
             initial={{ opacity: 0 }}

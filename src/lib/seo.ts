@@ -106,7 +106,7 @@ export function generateStructuredData({
   data,
 }: {
   type: 'Organization' | 'Article' | 'BreadcrumbList' | 'Project';
-  data: any;
+  data: Record<string, unknown>;
 }) {
   const baseUrl = siteConfig.url;
 
@@ -161,7 +161,7 @@ export function generateStructuredData({
       return {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
-        itemListElement: data.map((item: any, index: number) => ({
+        itemListElement: (data as unknown as Array<{ name: string, url: string }>).map((item, index: number) => ({
           '@type': 'ListItem',
           position: index + 1,
           name: item.name,

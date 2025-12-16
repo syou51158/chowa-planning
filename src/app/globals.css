@@ -42,6 +42,16 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-brand-primary: #0F172A;
+  --color-brand-secondary: #334155;
+  --color-brand-accent: #C29B40;
+  --color-brand-warning: #D97706;
+  --color-brand-steel: #475569;
+  --color-brand-concrete: #94A3B8;
+  --color-brand-stone: #CBD5E1;
+  --color-brand-natural: #F8FAFC;
+  --color-brand-dark: #020617;
+  --color-brand-success: #059669;
 }
 
 :root {
@@ -117,35 +127,41 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold;
     letter-spacing: -0.025em;
   }
-  
+
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl;
     line-height: 1.1;
   }
-  
+
   h2 {
     @apply text-3xl md:text-4xl lg:text-5xl;
     line-height: 1.2;
   }
-  
+
   h3 {
     @apply text-2xl md:text-3xl;
     line-height: 1.3;
   }
-  
+
   p {
     line-height: 1.7;
   }
-  
+
   .text-balance {
     text-wrap: balance;
   }
@@ -155,16 +171,16 @@
   .glass {
     @apply bg-white/10 backdrop-blur-md border border-white/20;
   }
-  
+
   .glass-dark {
     @apply bg-black/20 backdrop-blur-md border border-white/10;
   }
-  
+
   .text-shadow {
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
-  
+
   .text-shadow-lg {
-    text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   }
 }

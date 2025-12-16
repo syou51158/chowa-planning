@@ -74,7 +74,7 @@ export default function Header() {
               </motion.div>
               <div className="hidden sm:block">
                 <h1 className={cn(
-                  'text-lg md:text-xl font-bold transition-colors duration-300 text-white'
+                  'text-lg md:text-xl font-bold transition-colors duration-300 text-white text-shadow'
                 )}>
                   調和プランニング
                 </h1>
@@ -98,7 +98,7 @@ export default function Header() {
                       whileTap={{ scale: 0.95 }}
                       className={cn(
                         'relative px-4 py-2 rounded-lg transition-all duration-300 flex items-center gap-2 group',
-                        'text-white/80 hover:text-white hover:bg-white/10',
+                        'text-white hover:text-white hover:bg-white/10 text-shadow',
                         isActive && 'text-brand-accent bg-white/5 ring-1 ring-white/10'
                       )}
                     >
